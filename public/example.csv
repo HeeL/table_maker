@@ -1,0 +1,7 @@
+Kind;Height;Emergency exit;Openable
+
+Door;2200;False;True
+Window;600;True;True
+Door;2300;True;True
+Window;2000;False;True
+Desk;1000;False;False

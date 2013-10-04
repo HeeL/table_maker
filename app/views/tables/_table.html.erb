@@ -1,0 +1,24 @@
+<table>
+  <tr>
+    <td>
+      Kind
+    </td>
+    <td>
+      Height
+    </td>
+    <td>
+      Emergency Exit
+    </td>
+    <td>
+      Openable
+    </td>
+  </tr>
+    <%items.each do |item|%>
+      <tr>
+        <td><%=item.kind%></td>
+        <td><%=item.height%></td>
+        <td><%=item.emergency_exit ? 'Yes' : 'No'%></td>
+        <td><%=item.openable ? 'Yes' : 'No'%></td>
+      </tr>
+    <%end%>
+</table>

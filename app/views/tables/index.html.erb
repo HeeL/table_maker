@@ -1,0 +1,21 @@
+<%=form_tag(root_path, method: :post, multipart: true) do%>
+  CSV (<%=link_to 'example', '/example.csv'%>): <%= file_field_tag "csv" %>
+  <%= submit_tag 'Create a Table'%>
+<%end%>
+
+<h1>Tables:</h1>
+
+<div id="tables">
+  <%@tables.each do |table|%>
+    <%= form_tag search_path(id: table.id), method: :post do %>
+      <div class="condition-line">
+        <%=select_tag 'search[field][0]', options_for_select([['Kind', 'kind'], ['Height', 'height'], ['Emergency Exit', 'emergency_exit'], ['Openable', 'openable']])%> 
+        <%=select_tag 'search[sign][0]', options_for_select([['>', '>'], ['<', '>'], ['=', '='], ['!=', '!=']])%>
+        <%=text_field_tag 'search[value][0]'%>
+      </div>
+      <input type="button" class="add-condition" value=" + Add More Conditions" />
+      <%= submit_tag 'Search'%>
+    <%end%>
+    <%=render partial: 'tables/table', locals: {items: table.items}%>
+  <%end%>
+</div>

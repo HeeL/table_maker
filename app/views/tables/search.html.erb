@@ -1,0 +1,15 @@
+<%=form_tag(root_path, method: :post, multipart: true) do%>
+  CSV: <%= file_field_tag "csv" %>
+  <%= submit_tag 'Create a Table'%>
+<%end%>
+<%=link_to 'See All the Tables', root_path%>
+
+<h1>Search Results:</h1>
+
+<div id="tables">
+  <%=render partial: 'tables/table', locals: {items: @items}%>
+</div>
+
+<%= form_tag search_path(id: params[:id], save: '1', search: params[:search]), method: :post do %>
+  <%=submit_tag 'Save as a Subtable'%>
+<%end%>
